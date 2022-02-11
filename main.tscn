@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0, 0.501961, 0, 1 )
+
+[sub_resource type="BoxShape" id=5]
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0, 0, 1, 1 )
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="床" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="床"]
+transform = Transform( 10, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="床/CollisionShape"]
+material = SubResource( 2 )
+
+[node name="滑り台" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="滑り台"]
+transform = Transform( 2.30431, -0.451987, -2.99559, 0, 1.87129, -1.76468, 1.92097, 0.542184, 3.59338, 0, -0.110641, 0 )
+shape = SubResource( 5 )
+
+[node name="CSGBox" type="CSGBox" parent="滑り台/CollisionShape"]
+material = SubResource( 6 )
+
+[node name="四角" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="四角"]
+shape = SubResource( 3 )
+
+[node name="CSGBox" type="CSGBox" parent="四角/CollisionShape"]
+material = SubResource( 4 )
+
+[node name="カメラ" type="Camera" parent="."]
+transform = Transform( 0.970296, 0, -0.241922, 0, 1, 0, 0.241922, 0, 0.970296, -4.5, 5, 16 )
